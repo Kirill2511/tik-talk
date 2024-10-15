@@ -6,7 +6,7 @@ tmp
 /out-tsc
 
 # dependencies
-tik-talk/node_modules
+node_modules
 
 # IDEs and editors
 /.idea
