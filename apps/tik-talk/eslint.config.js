@@ -27,8 +27,6 @@ module.exports = [
   {
     files: ['**/*.html'],
     // Override or add rules here
-    rules: {
-      '@typescript-eslint/ban-ts-comment': 'off',
-    },
+    rules: {},
   },
 ];
