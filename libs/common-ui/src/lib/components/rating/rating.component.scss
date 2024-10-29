@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/*.tt-rating {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}*/
+
+.tt-rating-option {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  outline-color: transparent;
+}
+
+.tt-rating-icon {
+  width: 32px;
+  height: 32px;
+  color: #000;
+}
+
+.tt-rating-icon-active {
+  color: #AE7AFF;
+}

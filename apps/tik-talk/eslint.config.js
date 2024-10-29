@@ -22,6 +22,7 @@ module.exports = [
           style: 'kebab-case',
         },
       ],
+      '@typescript-eslint/ban-ts-comment': 'off',
     },
   },
   {

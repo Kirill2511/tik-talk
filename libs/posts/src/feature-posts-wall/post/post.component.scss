@@ -1,0 +1,47 @@
+:host {
+  display: grid;
+  padding: 20px;
+  border: 1px solid var(--light-color);
+  background: var(--dark-color);
+  grid-template-columns: 32px 1fr;
+  grid-gap: 16px;
+}
+
+.post-body {
+  display: grid;
+  grid-gap: 12px;
+}
+
+.post__author {
+  font-size: 14px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 21px;
+  color: var(--light-color);
+}
+
+.post-created-at {
+  color: var(--light-transparent-color);
+}
+
+.comment-amount {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.comments-length {
+  font-size: 12px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 16px; /* 133.333% */
+  color: var(--primary-color);
+}
+
+.post__comments-wrapper {
+  display: grid;
+  overflow-y: scroll;
+  max-height: 150px;
+  padding: 8px 0;
+  grid-gap: 8px;
+}

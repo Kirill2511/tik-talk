@@ -1,0 +1,23 @@
+<!--<ng-template [ngForOf]="starsArray" let-i="index" let-star ngFor></ng-template>-->
+
+@for (star of starsArray; track star; let i = $index) {
+
+  <div class="tt-rating-option" (click)="onOptionClick($event, star + 1)">
+  <span class="tt-hidden-accessible">
+    <input
+      type="radio"
+      value="0"
+      [checked]="value === 0"
+      [disabled]="disabled()"
+      (change)="onChange($event, star + 1)"
+    />
+  </span>
+
+    @if (!value || i >= value) {
+      <svg icon="star" class="tt-rating-icon"></svg>
+    } @else if (value && i < value) {
+      <svg icon="star" class="tt-rating-icon tt-rating-icon-active"></svg>
+    }
+  </div>
+
+}

@@ -1,19 +1,38 @@
-import { Route } from '@angular/router';
-import { SearchPageComponent } from './pages/search-page/search-page.component';
-import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
-import { LayoutComponent } from './common-ui/layout/layout.component';
-import { canActivateAuth } from './auth/access.guard';
+import { Routes } from '@angular/router';
+import { canActivateAuth, LoginPageComponent } from '@tt/auth';
+import {
+  ProfileEffects,
+  profileFeature,
+  ProfilePageComponent,
+  SearchPageComponent,
+  SettingsPageComponent,
+} from '@tt/profile';
+import { chatsRoutes } from '@tt/chats';
+import { LayoutComponent } from '@tt/layout';
+import { provideState } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { FormsExperimentComponent } from '@tt/experimental';
 
-export const appRoutes: Route[] = [
+export const appRoutes: Routes = [
   {
     path: '',
     component: LayoutComponent,
     children: [
-      { path: '', component: SearchPageComponent },
-      { path: 'profile', component: ProfilePageComponent },
+      { path: '', redirectTo: 'profile/me', pathMatch: 'full' },
+      { path: 'profile/:id', component: ProfilePageComponent },
+      { path: 'settings', component: SettingsPageComponent },
+      {
+        path: 'search',
+        component: SearchPageComponent,
+        providers: [
+          provideState(profileFeature),
+          provideEffects(ProfileEffects),
+        ],
+      },
+      { path: 'chats', loadChildren: () => chatsRoutes },
     ],
     canActivate: [canActivateAuth],
   },
   { path: 'login', component: LoginPageComponent },
+  { path: 'experimental', component: FormsExperimentComponent },
 ];

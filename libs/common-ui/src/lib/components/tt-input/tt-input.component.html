@@ -1,0 +1,12 @@
+<label class="tt-control-label mb16">
+  <ng-content></ng-content>
+  <input
+    (blur)="onTouched()"
+    (ngModelChange)="onModelChange($event)"
+    [disabled]="disabled()"
+    [ngModel]="value"
+    [placeholder]="placeholder()"
+    [type]="type()"
+    class="tt-input"
+  />
+</label>

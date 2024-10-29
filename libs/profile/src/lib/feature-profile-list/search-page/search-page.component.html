@@ -1,0 +1,25 @@
+<tt-profile-filters></tt-profile-filters>
+
+<div
+  (scrolled)="onScroll()"
+  [fromRoot]="true"
+  [infiniteScrollContainer]="'tt-search-page'"
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50"
+  class="profile-card__wrapper"
+  infiniteScroll
+>
+  @for (profile of profiles(); track profile.id) {
+    <app-profile-card
+      [profile]="profile"
+    ></app-profile-card>
+  }
+</div>
+
+<!--@if (last) {
+      @defer (on viewport) {
+        <tt-infinite-scroll-trigger (loaded)="timeToFetch()"></tt-infinite-scroll-trigger>
+      } @placeholder {
+        <div></div>
+      }
+    }-->

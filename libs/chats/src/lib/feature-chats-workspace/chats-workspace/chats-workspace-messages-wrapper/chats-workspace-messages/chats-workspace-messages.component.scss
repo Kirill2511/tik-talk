@@ -1,0 +1,34 @@
+:host {
+  display: grid;
+  margin-bottom: 16px;
+  grid-template-columns: 32px 1fr;
+  grid-gap: 12px;
+}
+
+:host.is-mine {
+  display: flex;
+  justify-content: end;
+
+  .message-container {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    order: -1;
+  }
+
+  .message-text {
+    color: black;
+    background: var(--primary-color);
+    clip-path: polygon(0% 0%, 75% 0, 100% 30%, 100% 100%, 0% 100%);
+  }
+}
+
+.message-text {
+  font-weight: 500;
+  width: min-content;
+  margin-top: 8px;
+  padding: 8px 16px;
+  color: var(--light-color);
+  background: var(--message-color);
+  clip-path: polygon(0 40%, 30% 0, 100% 0, 100% 100%, 0% 100%);
+}

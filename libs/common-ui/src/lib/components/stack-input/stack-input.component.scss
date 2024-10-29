@@ -1,0 +1,49 @@
+.stack-control {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--light-color);
+  background: var(--dark-color);
+  gap: 12px;
+}
+
+.stack-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stack-input {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--light-transparent-color);
+  border: none;
+  outline: none;
+}
+
+.stack-btn__delete {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.stack-ghost-input {
+  font-family: 'JetBrains Mono', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: var(--light-color);
+  border: none;
+  outline: none;
+  background: none;
+}
+
+:host.disabled {
+  .stack-control {
+    pointer-events: none;
+    opacity: 0.5;
+  }
+}
+
