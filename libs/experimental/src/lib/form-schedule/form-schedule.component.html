@@ -1,0 +1,130 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form">
+  @if (!schedule()) {
+    <h4 class="h4 mb16">Добавить новый рейс</h4>
+  } @else {
+    <h4 class="h4 mb16">Редактировать новый рейс</h4>
+  }
+
+  <label class="tt-control-label mb16">
+    Перевозчик
+    <select class="tt-input" formControlName="atp">
+      <option [value]="1">ООО "АТП"</option>
+      <option [value]="2">ИП "АТП"</option>
+      <option [value]="3">АТП</option>
+    </select>
+  </label>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      № маршрута
+      <select class="tt-input" formControlName="numberRoute">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>
+    </label>
+
+    <label class="tt-control-label mb16">
+      Название маршрута
+      <select class="tt-input" formControlName="nameRoute">
+        <option>Маршрут 1</option>
+        <option>Маршрут 2</option>
+        <option>Маршрут 3</option>
+        <option>Маршрут 4</option>
+        <option>Маршрут 5</option>
+        <option>Маршрут 6</option>
+        <option>Маршрут 7</option>
+        <option>Маршрут 8</option>
+        <option>Маршрут 9</option>
+        <option>Маршрут 10</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      Время отправления
+      <input class="tt-input" formControlName="timeFrom" type="time" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      Время прибытия
+      <input class="tt-input" formControlName="timeTo" type="time" />
+    </label>
+  </div>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      Дней в пути
+      <input class="tt-input" formControlName="dayToPath" type="number" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      Время в пути
+      <input class="tt-input" formControlName="timeToPath" type="text" />
+    </label>
+  </div>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      Пред. продажа в днях
+      <input
+        class="tt-input"
+        formControlName="countDaySale"
+        type="number"
+      />
+    </label>
+
+    <label class="tt-control-label mb16">
+      Гос. номер автобуса
+      <select class="tt-input" formControlName="numberBus">
+        <option>1</option>
+        <option>2</option>
+      </select>
+    </label>
+  </div>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      Класс автобуса
+      <input class="tt-input" formControlName="busClass" type="text" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      Мест для продажи
+      <input class="tt-input" formControlName="seat" type="text" />
+    </label>
+  </div>
+
+  <div class="two-columns">
+    <label class="tt-control-label mb16">
+      Модель автобуса
+      <input class="tt-input" formControlName="busModel" type="text" />
+    </label>
+
+    <label class="tt-control-label mb16">
+      Тип мест
+      <input class="tt-input" formControlName="typeSeat" type="text" />
+    </label>
+  </div>
+
+  <label class="tt-control-label mb16">
+    Схема распределения мест
+    <select class="tt-input" formControlName="seatDistribution">
+      <option [value]="1">Только по прибытию на вокзал</option>
+      <option [value]="2">Прод-а на одно место до разн.ост</option>
+      <option [value]="3">Продажа в пути и на вокзале</option>
+    </select>
+  </label>
+
+  <button [disabled]="form.invalid" class="btn btn-shadow mt20" type="submit">
+    Подтвердить
+  </button>
+</form>

@@ -54,6 +54,10 @@ body {
   border: 1px solid var(--dark-color);
   border-radius: 4px;
   background: var(--primary-color);
+
+  &:disabled {
+    background: var(--light-transparent-color);
+  }
 }
 
 .btn-icon {
@@ -150,6 +154,10 @@ body {
   border: 1px solid var(--light-color);
   border-radius: 4px;
   background: var(--dark-color);
+
+  &:disabled {
+    opacity: 0.6;
+  }
 }
 
 .tt-form-label {

@@ -49,4 +49,23 @@ export class MockService {
       },
     ]);
   }
+
+  getSchedule(): Observable<any> {
+    return of({
+      timeFrom: '10:00',
+      timeTo: '18:00',
+      dayToPath: 3,
+      timeToPath: '08:00',
+      countDaySale: 10,
+      numberBus: '1',
+      seatDistribution: 1,
+      busClass: 'Большой',
+      seat: '1',
+      busModel: 'МАН',
+      typeSeat: '29 сидя /21 стоя',
+      atp: 1,
+      nameRoute: 'Маршрут 4',
+      numberRoute: 1,
+    });
+  }
 }
