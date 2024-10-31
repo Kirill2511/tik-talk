@@ -1,9 +1,19 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, tap, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  catchError,
+  filter,
+  Observable,
+  switchMap,
+  tap,
+  throwError,
+} from 'rxjs';
 import { TokenResponse } from './auth.interface';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+
+const isRefreshing$ = new BehaviorSubject<boolean>(false);
 
 @Injectable({
   providedIn: 'root',
@@ -64,5 +74,26 @@ export class AuthService {
 
     this.cookieService.set('token', this.token);
     this.cookieService.set('refreshToken', this.refreshToken);
+  }
+
+  refreshTokenAndConnectWs(): Observable<{ access_token: string }> {
+    if (isRefreshing$.value) {
+      return isRefreshing$.pipe(
+        filter((isRefreshing) => !isRefreshing),
+        switchMap(() => this.refreshAuthToken())
+      );
+    }
+
+    isRefreshing$.next(true);
+    return this.refreshAuthToken().pipe(
+      tap((res) => {
+        this.saveTokens(res);
+        isRefreshing$.next(false);
+      }),
+      catchError((error) => {
+        isRefreshing$.next(false);
+        return throwError(error);
+      })
+    );
   }
 }

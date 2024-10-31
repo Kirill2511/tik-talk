@@ -1,7 +1,7 @@
 import { inject, Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Chat, LastMessageRes, Message } from '../interfaces/chats.interface';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { ProfileService } from '@tt/profile';
 import { ChatWsService } from '../interfaces/chat-ws-service.interface';
 import { AuthService } from '@tt/auth';
@@ -15,6 +15,8 @@ import { ChatWsRxjsService } from '../interfaces/chat-ws-rxjs.service';
 export class ChatsService {
   me = inject(ProfileService).me;
   activeChatMessages = signal<Message[]>([]);
+  count = signal<string | undefined>('');
+
   wsAdapter: ChatWsService = new ChatWsRxjsService();
   #authService = inject(AuthService);
   private http = inject(HttpClient);
@@ -23,18 +25,22 @@ export class ChatsService {
   private messageApiUrl = `${this.baseApiUrl}message/`;
 
   connectWs() {
-    return this.wsAdapter.connect({
-      url: `${this.baseApiUrl}chat/ws`,
-      token: this.#authService.token ?? '',
-      handleMessage: this.handleWSMessage,
-    }) as Observable<ChatWSMessage>;
+    return this.#authService.refreshTokenAndConnectWs().pipe(
+      switchMap((res) => {
+        return this.wsAdapter.connect({
+          url: `${this.baseApiUrl}chat/ws`,
+          token: res.access_token,
+          handleMessage: this.handleWSMessage,
+        }) as Observable<ChatWSMessage>;
+      })
+    );
   }
 
   handleWSMessage = (message: ChatWSMessage) => {
     if (!('action' in message)) return;
 
     if (isUnreadMessage(message)) {
-      //
+      this.count.set(message.data.count.toString());
     }
 
     if (isNewMessage(message)) {
