@@ -15,7 +15,7 @@ import { ChatWsRxjsService } from '../interfaces/chat-ws-rxjs.service';
 export class ChatsService {
   me = inject(ProfileService).me;
   activeChatMessages = signal<Message[]>([]);
-  count = signal<string | undefined>('');
+  count = signal<string>('');
 
   wsAdapter: ChatWsService = new ChatWsRxjsService();
   #authService = inject(AuthService);

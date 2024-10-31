@@ -1,10 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, effect, inject, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
-import { AsyncPipe, NgForOf } from '@angular/common';
+import { AsyncPipe, NgForOf, NgIf } from '@angular/common';
 import { ImgUrlPipe, SvgIconComponent } from '@tt/common-ui';
 import { ProfileService } from '@tt/profile';
+import { ChatsService } from '@tt/chats';
 
 @Component({
   selector: 'tt-sidebar',
@@ -17,17 +18,19 @@ import { ProfileService } from '@tt/profile';
     AsyncPipe,
     RouterLinkActive,
     NgForOf,
+    NgIf,
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent implements OnInit {
   profileService = inject(ProfileService);
+  chatsService = inject(ChatsService);
   subcribers$ = this.profileService.getSubscribersShortList();
 
   me = this.profileService.me;
 
-  menuItems = [
+  menuItems: { label: string; icon: string; link: string; count?: string }[] = [
     {
       label: 'Моя страница',
       icon: 'home',
@@ -37,6 +40,7 @@ export class SidebarComponent implements OnInit {
       label: 'Чаты',
       icon: 'chats',
       link: 'chats',
+      count: '',
     },
     {
       label: 'Формы',
@@ -50,7 +54,14 @@ export class SidebarComponent implements OnInit {
     },
   ];
 
+  constructor() {
+    effect(() => {
+      this.menuItems[1].count = this.chatsService.count();
+    });
+  }
+
   ngOnInit() {
     firstValueFrom(this.profileService.getMe());
+    this.chatsService.connectWs().subscribe();
   }
 }

@@ -10,6 +10,11 @@
       >
         <svg [icon]="menuItem.icon"></svg>
         <span>{{ menuItem.label }}</span>
+
+        @if (menuItem.count !== '' && menuItem.count !== undefined) {
+          <span class="medium-text menu-item__count">{{menuItem?.count}}</span>
+        }
+
       </a>
     </li>
   </ul>
