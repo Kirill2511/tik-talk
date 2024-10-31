@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ChatsWorkspaceHeaderComponent } from './chats-workspace-header/chats-workspace-header.component';
 import { ChatsWorkspaceMessagesWrapperComponent } from './chats-workspace-messages-wrapper/chats-workspace-messages-wrapper.component';
 import { ActivatedRoute, Router } from '@angular/router';
-import { catchError, filter, interval, of, startWith, switchMap } from 'rxjs';
+import { catchError, filter, of, switchMap, timer } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { MessageInputComponent } from '../../ui';
 import { ChatsService } from '../../data';
@@ -40,8 +40,7 @@ export class ChatsWorkspaceComponent {
         );
       }
 
-      return interval(60000).pipe(
-        startWith(0),
+      return timer(0, 60000).pipe(
         switchMap(() => this.chatsService.getChatById(id)),
         catchError((error) => {
           console.error('Error fetching chat:', error);
