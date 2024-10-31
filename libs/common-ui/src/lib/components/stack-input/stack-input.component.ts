@@ -37,7 +37,7 @@ export class StackInputComponent implements ControlValueAccessor {
   innerInput = '';
   inputVisible = false;
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
-  protected placeholder = input<string>('Добавьте тег');
+  public placeholder = input<string>('Добавьте тег');
   #disabled = signal<boolean>(false);
 
   @HostBinding('class.disabled')
