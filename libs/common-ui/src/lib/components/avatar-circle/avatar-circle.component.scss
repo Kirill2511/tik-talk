@@ -8,3 +8,8 @@ img {
   width: 32px;
   height: 32px;
 }
+
+:host.size72 img {
+  width: 72px;
+  height: 72px;
+}
