@@ -1,8 +1,11 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ElementRef,
   forwardRef,
   HostBinding,
+  input,
+  signal,
   ViewChild,
 } from '@angular/core';
 import { SvgIconComponent } from '@tt/common-ui';
@@ -20,6 +23,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [SvgIconComponent, FormsModule, AsyncPipe],
   templateUrl: './stack-input.component.html',
   styleUrl: './stack-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
@@ -33,11 +37,12 @@ export class StackInputComponent implements ControlValueAccessor {
   innerInput = '';
   inputVisible = false;
   @ViewChild('inputElement', { static: false }) inputElement?: ElementRef;
-  #disabled = false;
+  protected placeholder = input<string>('Добавьте тег');
+  #disabled = signal<boolean>(false);
 
   @HostBinding('class.disabled')
   get disabled() {
-    return this.#disabled;
+    return this.#disabled();
   }
 
   handleInputConfirm(): void {
@@ -57,7 +62,7 @@ export class StackInputComponent implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.#disabled = isDisabled;
+    this.#disabled.set(isDisabled);
   }
 
   writeValue(stack: string[] | null): void {

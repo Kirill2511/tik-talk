@@ -12,7 +12,7 @@
     </div>
   }
   @if (!inputVisible) {
-    <span (click)="showInput()" class="stack-input">Добавьте тег</span>
+    <span (click)="showInput()" class="stack-input">{{placeholder()}}</span>
   } @else {
     <input
       #inputElement
