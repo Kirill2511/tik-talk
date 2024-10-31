@@ -1,7 +1,7 @@
 <div class="message-wrapper">
-  @for (groupMessagesByDate of groupMessagesByDate(); track groupMessagesByDate) {
+  @for (groupMessagesByDate of groupMessagesByDate(); track groupMessagesByDate.date) {
     <div class=" message-wrapper__date"><span class="medium-text">{{ groupMessagesByDate.date | formatDate }}</span></div>
-    @for (message of groupMessagesByDate.messages; track message) {
+    @for (message of groupMessagesByDate.messages; track message.id) {
       <tt-chats-workspace-messages
         [message]="message"
       ></tt-chats-workspace-messages>
