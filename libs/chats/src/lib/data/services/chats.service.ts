@@ -7,7 +7,7 @@ import { ChatWsService } from '../interfaces/chat-ws-service.interface';
 import { AuthService } from '@tt/auth';
 import { ChatWSMessage } from '../interfaces/chat-ws-message.interface';
 import { isNewMessage, isUnreadMessage } from '../interfaces/type-guards';
-import { ChatWsRxjsService } from '../interfaces/chat-ws-rxjs.service';
+import { ChatWsRxjsService } from './chat-ws-rxjs.service';
 
 @Injectable({
   providedIn: 'root',

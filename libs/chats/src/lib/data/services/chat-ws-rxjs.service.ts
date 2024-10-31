@@ -1,9 +1,9 @@
 import {
   ChatConnectionWSParams,
   ChatWsService,
-} from './chat-ws-service.interface';
+} from '../interfaces/chat-ws-service.interface';
 import { WebSocketSubject } from 'rxjs/internal/observable/dom/WebSocketSubject';
-import { ChatWSMessage } from './chat-ws-message.interface';
+import { ChatWSMessage } from '../interfaces/chat-ws-message.interface';
 import { webSocket } from 'rxjs/webSocket';
 import { finalize, Observable, tap } from 'rxjs';
 
