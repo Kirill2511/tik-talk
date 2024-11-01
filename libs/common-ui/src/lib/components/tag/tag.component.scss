@@ -1,0 +1,26 @@
+:host {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  cursor: default;
+  text-decoration: none;
+  border: var(--light-border);
+  border-radius: 2px;
+  outline: none;
+  background-color: var(--dark-color);
+  max-inline-size: 100%;
+}
+
+.tt-tag {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: 4px 8px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  block-size: 2rem;
+}
+
+.tt-tag__text {
+  padding-right: 0.02em;
+}
