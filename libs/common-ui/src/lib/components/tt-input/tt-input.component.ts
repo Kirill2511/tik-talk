@@ -24,6 +24,8 @@ export class TtInputComponent implements ControlValueAccessor {
   placeholder = input<string>('');
   disabled = signal<boolean>(false);
 
+  border = input<'full' | 'bottom'>('full');
+
   onChange: any;
   onTouched: any;
 

@@ -1,0 +1,13 @@
+.tt-input {
+
+  &[data-border='full'] {
+    border: 1px solid var(--light-color);
+  }
+
+  &[data-border='bottom'], &:focus-visible {
+    border: none;
+    border-bottom: 1px solid var(--light-color);
+    border-radius: 0;
+    outline: none;
+  }
+}

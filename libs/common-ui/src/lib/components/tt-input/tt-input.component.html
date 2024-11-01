@@ -3,6 +3,7 @@
   <input
     (blur)="onTouched()"
     (ngModelChange)="onModelChange($event)"
+    [attr.data-border]="border()"
     [disabled]="disabled()"
     [ngModel]="value"
     [placeholder]="placeholder()"
