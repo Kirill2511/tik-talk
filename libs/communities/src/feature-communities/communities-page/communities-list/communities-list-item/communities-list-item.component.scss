@@ -12,16 +12,28 @@
   justify-content: space-between;
   width: 100%;
   grid-template-columns: 1fr 1fr;
-}
 
-.communities-list-item__info {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
 
-.communities-list-item__btns {
-  display: flex;
-  justify-content: flex-end;
-  gap: 6px;
+  &__info-text {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  &__name {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 6px;
+  }
 }

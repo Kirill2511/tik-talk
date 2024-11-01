@@ -5,11 +5,17 @@ import {
   TagComponent,
 } from '@tt/common-ui';
 import { Community } from '../../../../data';
+import { FormatNamesPipe } from '../../../../pipes';
 
 @Component({
   selector: 'tt-communities-list-item',
   standalone: true,
-  imports: [AvatarCircleComponent, SvgIconComponent, TagComponent],
+  imports: [
+    AvatarCircleComponent,
+    SvgIconComponent,
+    TagComponent,
+    FormatNamesPipe,
+  ],
   templateUrl: './communities-list-item.component.html',
   styleUrl: './communities-list-item.component.scss',
 })

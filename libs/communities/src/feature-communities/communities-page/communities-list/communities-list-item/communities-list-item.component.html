@@ -1,27 +1,32 @@
 @if (community(); as community) {
-<div class="communities-list-item">
-  <div class="communities-list-item__info">
-    <tt-avatar-circle class="size72" [avatarUrl]="community.avatarUrl"></tt-avatar-circle>
-    <div>
-      <div class="h6">{{community.name}}</div>
-      <div class="regular">{{community.description}}</div>
+  <div class="communities-list-item">
+    <div class="communities-list-item__info">
+      <tt-avatar-circle
+        class="size72"
+        [avatarUrl]="community.avatarUrl"
+      ></tt-avatar-circle>
+      <div class="communities-list-item__info-text">
+        <div class="communities-list-item__name">
+          <div class="h6">{{ community.name }}</div>
+          <div class="regular">{{ community.description }}</div>
+        </div>
+        <div class="communities-list-item__tags">
+          @for (themes of community.themes; track themes) {
+            <tt-tag [value]="themes | formatNames"></tt-tag>
+          }
+        </div>
+      </div>
     </div>
-    <div>
-      @for (themes of community.themes; track themes) {
-        <tt-tag [value]="themes"></tt-tag>
-      }
+    <div class="communities-list-item__btns">
+      <button class="btn" type="button">
+        Подписаться
+        <svg class="svg16" icon="subscribe"></svg>
+      </button>
+      <button class="btn" type="button">
+        <svg class="svg16" icon="arrow-up"></svg>
+      </button>
     </div>
   </div>
-  <div class="communities-list-item__btns">
-    <button class="btn" type="button">
-      Подписаться
-      <svg class="svg16" icon="subscribe"></svg>
-    </button>
-    <button class="btn" type="button">
-      <svg class="svg16" icon="arrow-up"></svg>
-    </button>
-  </div>
-</div>
 } @else {
   123
 }
