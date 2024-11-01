@@ -1,0 +1,16 @@
+<div [formGroup]="formSearch" class="communities-list-filters btn-shadow">
+  <tt-input border="bottom" formControlName="name"
+    >Название сообщества</tt-input
+  >
+  <label class="tt-control-label mb16">
+    Тема
+    <select class="tt-input tt-input_border-bottom" formControlName="themes">
+      @for (themes of themesOptions; track themes.id) {
+        <option [value]="themes.value">{{ themes.name }}</option>
+      }
+    </select>
+  </label>
+  <tt-stack-input formControlName="tags" placeholder="Напишите навыки"
+    >Навыки
+  </tt-stack-input>
+</div>

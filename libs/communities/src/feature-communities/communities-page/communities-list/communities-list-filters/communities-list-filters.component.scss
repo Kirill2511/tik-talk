@@ -1,0 +1,8 @@
+.communities-list-filters {
+  display: grid;
+  padding: 16px 20px;
+  border: var(--light-border);
+  background-color: var(--dark-color);
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 20px;
+}

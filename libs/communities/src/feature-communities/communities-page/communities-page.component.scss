@@ -1,0 +1,12 @@
+.communities__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.communities__body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  align-items: center;
+  padding: 44px 24px;
+  border: var(--light-border);
+  background-color: var(--dark-color);
+}
+
+.communities-list-item {
+  display: grid;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  grid-template-columns: 1fr 1fr;
+}
+
+.communities-list-item__info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.communities-list-item__btns {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+}

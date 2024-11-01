@@ -1,0 +1,7 @@
+<tt-communities-list-filters></tt-communities-list-filters>
+
+<div class="communities-list__container">
+@for (community of communities(); track community.id) {
+  <tt-communities-list-item [community]="community"></tt-communities-list-item>
+}
+</div>

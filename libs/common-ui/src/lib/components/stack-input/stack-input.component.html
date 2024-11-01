@@ -1,27 +1,31 @@
-<div class="stack-control">
-  @for (tech of value$ | async; track tech; let i = $index) {
-    <div class="skill-tag stack-tag">
-      <button
-        (click)="onTagDelete(i)"
-        class="stack-btn__delete svg16"
-        type="button"
-      >
-        <svg class="svg10" icon="cross"></svg>
-      </button>
-      {{ tech }}
-    </div>
-  }
-  @if (!inputVisible) {
-    <span (click)="showInput()" class="stack-input">{{placeholder()}}</span>
-  } @else {
-    <input
-      #inputElement
-      (blur)="handleInputConfirm()"
-      (keydown.enter)="handleInputConfirm()"
-      [(ngModel)]="innerInput"
-      class="stack-ghost-input"
-      type="text"
-    />
-  }
+<label class="tt-control-label mb16" for="stack">
+  <ng-content></ng-content>
+  <div class="stack-control">
+    @for (tech of value$ | async; track tech; let i = $index) {
+      <div class="skill-tag stack-tag">
+        <button
+          (click)="onTagDelete(i)"
+          class="stack-btn__delete svg16"
+          type="button"
+        >
+          <svg class="svg10" icon="cross"></svg>
+        </button>
+        {{ tech }}
+      </div>
+    }
+    @if (!inputVisible) {
+      <span (click)="showInput()" class="stack-input">{{ placeholder() }}</span>
+    } @else {
+      <input
+        id="stack"
+        #inputElement
+        (blur)="handleInputConfirm()"
+        (keydown.enter)="handleInputConfirm()"
+        [(ngModel)]="innerInput"
+        class="stack-ghost-input"
+        type="text"
+      />
+    }
 
-</div>
+  </div>
+</label>
