@@ -1,5 +1,3 @@
-<svg fill="currentColor" height="24px" id="arrow_up" viewBox="0 0 24 24"
-     width="24px" xmlns="http://www.w3.org/2000/svg">
-  <rect fill="none" height="24" width="24" />
-  <path d="M9,5v2h6.59L4,18.59L5.41,20L17,8.41V15h2V5H9z" />
+<svg fill="none" height="16" id="arrow-up" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+<path d="M6 3.34375H12.6562V10H11.3438V5.59375L3.59375 13.3438L2.65625 12.4062L10.4062 4.65625H6V3.34375Z" fill="currentColor"/>
 </svg>
