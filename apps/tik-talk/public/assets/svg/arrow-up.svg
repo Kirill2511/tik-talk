@@ -1,3 +1,5 @@
-<svg width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M4 0.34375H10.6562V7H9.34375V2.59375L1.59375 10.3438L0.65625 9.40625L8.40625 1.65625H4V0.34375Z" fill="black"/>
+<svg fill="currentColor" height="24px" id="arrow_up" viewBox="0 0 24 24"
+     width="24px" xmlns="http://www.w3.org/2000/svg">
+  <rect fill="none" height="24" width="24" />
+  <path d="M9,5v2h6.59L4,18.59L5.41,20L17,8.41V15h2V5H9z" />
 </svg>

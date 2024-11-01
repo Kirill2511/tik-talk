@@ -141,6 +141,7 @@ body {
   font-weight: 700;
   line-height: 16px;
   display: block;
+  color: var(--light-transparent-color);
 }
 
 .tt-input {
@@ -159,6 +160,14 @@ body {
 
   &:disabled {
     opacity: 0.6;
+  }
+
+  &_border-bottom,
+  &_border-bottom:focus-visible {
+    border: none;
+    border-bottom: var(--light-border);
+    border-radius: 0;
+    outline: none;
   }
 }
 
