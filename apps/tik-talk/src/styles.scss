@@ -46,14 +46,16 @@ body {
 .btn {
   font-size: 14px;
   font-weight: 700;
-  line-height: 24px;
-  width: 100%;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
   padding: 10px 20px;
   cursor: pointer;
   color: var(--dark-color);
   border: 1px solid var(--dark-color);
   border-radius: 4px;
   background: var(--primary-color);
+  gap: 8px;
 
   &:disabled {
     background: var(--light-transparent-color);
