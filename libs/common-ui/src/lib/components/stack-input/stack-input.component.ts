@@ -8,7 +8,6 @@ import {
   signal,
   ViewChild,
 } from '@angular/core';
-import { SvgIconComponent } from '@tt/common-ui';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -16,6 +15,7 @@ import {
 } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { SvgIconComponent } from '../svg-icon/svg-icon.component';
 
 @Component({
   selector: 'tt-stack-input',
@@ -45,9 +45,15 @@ export class StackInputComponent implements ControlValueAccessor {
     return this.#disabled();
   }
 
+  onChange(value: string[] | null) {}
+
+  onTouched() {}
+
   handleInputConfirm(): void {
     if (this.innerInput && this.value$.value.indexOf(this.innerInput) === -1) {
-      this.value$.next([...this.value$.value, this.innerInput]);
+      const newValue = [...this.value$.value, this.innerInput];
+      this.value$.next(newValue);
+      this.onChange(newValue);
     }
     this.innerInput = '';
     this.inputVisible = false;
@@ -74,15 +80,11 @@ export class StackInputComponent implements ControlValueAccessor {
     this.value$.next(stack);
   }
 
-  onChange(value: string[] | null) {}
-
-  onTouched() {}
-
   onTagDelete(i: number) {
-    const tags = this.value$.value;
+    const tags = [...this.value$.value];
     tags.splice(i, 1);
     this.value$.next(tags);
-    this.onChange(this.value$.value);
+    this.onChange(tags);
   }
 
   showInput() {
