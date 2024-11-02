@@ -11,6 +11,12 @@ export interface FiltersFormValue {
   tags: string[] | null;
 }
 
+interface SearchForm {
+  themes: FormControl<string[] | null>;
+  name: FormControl<string | null>;
+  tags: FormControl<string[] | null>;
+}
+
 @Component({
   selector: 'tt-communities-list-filters',
   standalone: true,
@@ -21,7 +27,7 @@ export interface FiltersFormValue {
 export class CommunitiesListFiltersComponent {
   store = inject(Store);
 
-  formSearch = new FormGroup({
+  formSearch = new FormGroup<SearchForm>({
     themes: new FormControl<string[] | null>(null),
     name: new FormControl<string | null>(null),
     tags: new FormControl<string[] | null>(null),
