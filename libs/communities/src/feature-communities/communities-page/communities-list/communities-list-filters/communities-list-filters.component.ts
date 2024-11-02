@@ -3,7 +3,7 @@ import { StackInputComponent, TtInputComponent } from '@tt/common-ui';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, startWith, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { communityActions } from '../../../../data';
+import { communityActions, CommunityThemes } from '../../../../data';
 
 @Component({
   selector: 'tt-communities-list-filters',
@@ -24,11 +24,11 @@ export class CommunitiesListFiltersComponent {
   searchFormSub!: Subscription;
   protected readonly themesOptions = [
     { id: '0', name: 'Все', value: '', selected: true },
-    { id: '1', name: 'Программирование', value: 'PROGRAMMING' },
-    { id: '2', name: 'Технология', value: 'TECHNOLOGY' },
-    { id: '3', name: 'Образование', value: 'EDUCATION' },
-    { id: '4', name: 'Спорт', value: 'SPORT' },
-    { id: '5', name: 'Другое', value: 'OTHER' },
+    { id: '1', name: 'Программирование', value: CommunityThemes.PROGRAMMING },
+    { id: '2', name: 'Технология', value: CommunityThemes.TECHNOLOGY },
+    { id: '3', name: 'Образование', value: CommunityThemes.EDUCATION },
+    { id: '4', name: 'Спорт', value: CommunityThemes.SPORT },
+    { id: '5', name: 'Другое', value: CommunityThemes.OTHER },
   ];
 
   constructor() {
