@@ -3,7 +3,13 @@ import { StackInputComponent, TtInputComponent } from '@tt/common-ui';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, startWith, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { communityActions, CommunityThemes } from '../../../../data';
+import { communityActions, themesOptions } from '../../../../data';
+
+export interface FiltersFormValue {
+  themes: string[] | null;
+  name: string | null;
+  tags: string[] | null;
+}
 
 @Component({
   selector: 'tt-communities-list-filters',
@@ -36,7 +42,7 @@ export class CommunitiesListFiltersComponent {
       .pipe(
         startWith({}),
         debounceTime(300),
-        map((formValue) => this.filterNullValues(formValue))
+        map((formValue) => this.filterValues(formValue))
       )
       .subscribe((formValue) => {
         this.store.dispatch(
@@ -45,14 +51,51 @@ export class CommunitiesListFiltersComponent {
       });
   }
 
-  private filterNullValues(formValue: { [key: string]: any }): {
-    [key: string]: any;
-  } {
+  private filterValues<T extends Record<string, any>>(
+    formValue: T
+  ): Partial<T> {
     return Object.keys(formValue).reduce((acc, key) => {
-      if (formValue[key] !== null) {
+      const value = formValue[key];
+      if (
+        value === null ||
+        value === undefined ||
+        value === '' ||
+        (Array.isArray(value) && value.length === 0) ||
+        (typeof value === 'object' &&
+          value !== null &&
+          Object.keys(value).length === 0)
+      ) {
+        return acc;
+      }
+
+      (acc as any)[key] = value;
+      return acc;
+    }, {} as Partial<T>);
+  }
+
+  /*private filterNullValues(
+    formValue: Partial<FiltersFormValue>
+  ): Partial<FiltersFormValue> {
+    return (Object.keys(formValue) as Array<keyof FiltersFormValue>).reduce<
+      Partial<FiltersFormValue>
+    >((acc, key) => {
+      if (formValue[key] !== null || formValue[key] === '') {
+        // @ts-ignore
         acc[key] = formValue[key];
       }
       return acc;
-    }, {} as { [key: string]: any });
-  }
+    }, {});
+  }*/
+
+  /*private filterNullValues(
+    formValue: Partial<FiltersFormValue>
+  ): Partial<FiltersFormValue> {
+    return Object.keys(formValue).reduce((acc, key) => {
+      const value = formValue[key as keyof FiltersFormValue];
+      if (value !== null && value !== undefined) {
+        acc[key as keyof FiltersFormValue] = value as any;
+      }
+      return acc;
+    }, {} as Partial<FiltersFormValue>);
+  }*/
 }
