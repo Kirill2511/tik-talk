@@ -5,12 +5,6 @@ import { debounceTime, map, startWith, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { communityActions, themesOptions } from '../../../../data';
 
-export interface FiltersFormValue {
-  themes: string[] | null;
-  name: string | null;
-  tags: string[] | null;
-}
-
 interface SearchForm {
   themes: FormControl<string[] | null>;
   name: FormControl<string | null>;
@@ -42,7 +36,7 @@ export class CommunitiesListFiltersComponent {
       .pipe(
         startWith({}),
         debounceTime(300),
-        map((formValue) => this.filterValues(formValue))
+        map((formValue) => this.checkEmptyValue(formValue))
       )
       .subscribe((formValue) => {
         this.store.dispatch(
@@ -51,7 +45,7 @@ export class CommunitiesListFiltersComponent {
       });
   }
 
-  private filterValues<T extends Record<string, any>>(
+  private checkEmptyValue<T extends Record<string, any>>(
     formValue: T
   ): Partial<T> {
     return Object.keys(formValue).reduce((acc, key) => {
