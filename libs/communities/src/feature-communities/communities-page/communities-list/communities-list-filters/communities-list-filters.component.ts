@@ -34,14 +34,8 @@ export class CommunitiesListFiltersComponent {
   });
 
   searchFormSub!: Subscription;
-  protected readonly themesOptions = [
-    { id: '0', name: 'Все', value: '', selected: true },
-    { id: '1', name: 'Программирование', value: CommunityThemes.PROGRAMMING },
-    { id: '2', name: 'Технология', value: CommunityThemes.TECHNOLOGY },
-    { id: '3', name: 'Образование', value: CommunityThemes.EDUCATION },
-    { id: '4', name: 'Спорт', value: CommunityThemes.SPORT },
-    { id: '5', name: 'Другое', value: CommunityThemes.OTHER },
-  ];
+
+  protected readonly themesOptions = themesOptions;
 
   constructor() {
     this.searchFormSub = this.formSearch.valueChanges
