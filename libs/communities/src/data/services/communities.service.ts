@@ -8,7 +8,7 @@ import { Community } from '../interfaces/communities.interface';
 })
 export class CommunitiesService {
   private http = inject(HttpClient);
-  private baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  private baseApiUrl = '/yt-course/';
   #communityApiUrl = `${this.baseApiUrl}community/`;
 
   filterCommunity(params: Record<string, any>) {

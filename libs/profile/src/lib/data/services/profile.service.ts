@@ -15,7 +15,7 @@ interface ProfileState {
 })
 export class ProfileService extends SignalsStoreService<ProfileState> {
   http = inject(HttpClient);
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
   me = signal<Profile | null>(null);
   #globalStoreService = inject(GlobalStoreService);
 

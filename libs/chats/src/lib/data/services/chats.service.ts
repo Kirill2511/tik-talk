@@ -20,7 +20,7 @@ export class ChatsService {
   wsAdapter: ChatWsService = new ChatWsRxjsService();
   #authService = inject(AuthService);
   private http = inject(HttpClient);
-  private baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  private baseApiUrl = '/yt-course/';
   private chatsApiUrl = `${this.baseApiUrl}chat/`;
   private messageApiUrl = `${this.baseApiUrl}message/`;
 

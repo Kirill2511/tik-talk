@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { communityActions } from './actions';
-import { map, switchMap, withLatestFrom } from 'rxjs';
+import { catchError, map, of, switchMap, withLatestFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { CommunitiesService } from '../services/communities.service';
 import { selectCommunityFilters, selectCommunityPageable } from './selectors';
@@ -16,18 +16,30 @@ export class CommunityEffects {
 
   filterCommunities = createEffect(() => {
     return this.actions$.pipe(
-      ofType(communityActions.filterEvents, communityActions.setPage),
+      ofType(communityActions.communityFilter, communityActions.setPage),
       withLatestFrom(
         this.store.select(selectCommunityFilters),
         this.store.select(selectCommunityPageable)
       ),
       switchMap(([_, filters, pageable]) => {
-        return this.communityService.filterCommunity({
-          ...pageable,
-          ...filters,
-        });
-      }),
-      map((res) => communityActions.communityLoaded({ community: res.items }))
+        return this.communityService
+          .filterCommunity({
+            ...pageable,
+            ...filters,
+          })
+          .pipe(
+            map((res) =>
+              communityActions.communityLoaded({ community: res.items })
+            ),
+            catchError((err: { statusText: string }) => {
+              return of(
+                communityActions.communityLoadFailed({
+                  errorMsg: err.statusText,
+                })
+              );
+            })
+          );
+      })
     );
   });
 }

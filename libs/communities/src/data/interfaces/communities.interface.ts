@@ -1,12 +1,12 @@
 import { Profile } from '@tt/interfaces/profile';
 import { Post } from '@tt/posts';
 
-export interface Communities {
-  items: Community[];
-  total: number;
-  page: number;
-  size: number;
-  pages: number;
+export enum CommunityThemes {
+  PROGRAMMING = 'PROGRAMMING',
+  TECHNOLOGY = 'TECHNOLOGY',
+  EDUCATION = 'EDUCATION',
+  SPORT = 'SPORT',
+  OTHER = 'OTHER',
 }
 
 export interface Community {
