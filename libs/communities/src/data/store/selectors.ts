@@ -20,3 +20,8 @@ export const selectCommunityFilters = createSelector(
   communityFeature.selectCommunityFilters,
   (filters) => filters
 );
+
+export const selectCommunityError = createSelector(
+  communityFeature.selectError,
+  (error) => error
+);
