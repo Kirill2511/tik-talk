@@ -14,7 +14,7 @@ export class PostService {
   posts = signal<Post[]>([]);
 
   private http = inject(HttpClient);
-  private baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  private baseApiUrl = '/yt-course/';
 
   createPost(payload: PostCreateDto) {
     return this.http.post<Post>(`${this.baseApiUrl}post/`, payload).pipe(

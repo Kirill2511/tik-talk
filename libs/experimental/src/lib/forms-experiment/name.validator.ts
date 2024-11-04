@@ -14,22 +14,20 @@ import { Profile } from '@tt/interfaces/profile';
 export class NameValidator implements AsyncValidator {
   http = inject(HttpClient);
   validate(control: AbstractControl): Observable<ValidationErrors | null> {
-    return this.http
-      .get<Profile[]>('https://icherniakov.ru/yt-course/account/test_accounts')
-      .pipe(
-        delay(1000),
-        map((users) => {
-          return users.filter((user) => user.firstName === control.value)
-            .length > 0
-            ? null
-            : {
-                nameValid: {
-                  message: `Имя должно быть одним из имеющихся: ${users
-                    .map((user) => user.firstName)
-                    .join(', ')}`,
-                },
-              };
-        })
-      );
+    return this.http.get<Profile[]>('/yt-course/account/test_accounts').pipe(
+      delay(1000),
+      map((users) => {
+        return users.filter((user) => user.firstName === control.value).length >
+          0
+          ? null
+          : {
+              nameValid: {
+                message: `Имя должно быть одним из имеющихся: ${users
+                  .map((user) => user.firstName)
+                  .join(', ')}`,
+              },
+            };
+      })
+    );
   }
 }

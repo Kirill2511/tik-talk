@@ -23,7 +23,7 @@ export class AuthService {
   cookieService = inject(CookieService);
   router = inject(Router);
 
-  baseApiUrl = 'https://icherniakov.ru/yt-course/';
+  baseApiUrl = '/yt-course/';
 
   token: string | null = null;
   refreshToken: string | null = null;
