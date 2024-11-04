@@ -29,7 +29,7 @@ export const communityFeature = createFeature({
         error: null,
       };
     }),
-    on(communityActions.filterEvents, (state, payload) => {
+    on(communityActions.communityFilter, (state, payload) => {
       return {
         ...state,
         community: [],

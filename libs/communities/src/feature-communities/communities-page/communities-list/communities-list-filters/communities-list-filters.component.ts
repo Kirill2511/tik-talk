@@ -40,7 +40,7 @@ export class CommunitiesListFiltersComponent {
       )
       .subscribe((formValue) => {
         this.store.dispatch(
-          communityActions.filterEvents({ filters: formValue })
+          communityActions.communityFilter({ filters: formValue })
         );
       });
   }
