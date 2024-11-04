@@ -5,7 +5,7 @@ import {
   TagComponent,
 } from '@tt/common-ui';
 import { Community } from '../../../../data';
-import { FormatNamesPipe } from '../../../../pipes';
+import { FormatNamesPipe } from '../../../../ui/pipes';
 
 @Component({
   selector: 'tt-communities-list-item',

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { CommunityThemes } from '../data';
+import { CommunityThemes } from '../../data';
 
 @Pipe({
   name: 'formatNames',
