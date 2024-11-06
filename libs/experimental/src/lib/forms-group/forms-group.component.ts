@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormScheduleComponent } from '../form-schedule/form-schedule.component';
 import { MockService } from '../experimental/mock.service';
 import { AsyncPipe } from '@angular/common';
@@ -9,6 +9,7 @@ import { AsyncPipe } from '@angular/common';
   imports: [FormScheduleComponent, AsyncPipe],
   templateUrl: './forms-group.component.html',
   styleUrl: './forms-group.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsGroupComponent {
   mockService = inject(MockService);
