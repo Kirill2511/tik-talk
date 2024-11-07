@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 420px;
+}
+
+.communities-create__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.communities-create__btns {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 42px;
+  gap: 10px;
+}
