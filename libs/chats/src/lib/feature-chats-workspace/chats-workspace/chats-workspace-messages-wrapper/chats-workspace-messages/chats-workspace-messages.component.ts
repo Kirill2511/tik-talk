@@ -1,4 +1,9 @@
-import { Component, HostBinding, input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostBinding,
+  input,
+} from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { AvatarCircleComponent } from '@tt/common-ui';
 import { Message } from '../../../../data';
@@ -9,6 +14,7 @@ import { Message } from '../../../../data';
   imports: [AvatarCircleComponent, DatePipe],
   templateUrl: './chats-workspace-messages.component.html',
   styleUrl: './chats-workspace-messages.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChatsWorkspaceMessagesComponent {
   message = input.required<Message>();

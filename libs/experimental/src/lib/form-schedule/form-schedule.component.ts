@@ -1,4 +1,9 @@
-import { Component, input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  input,
+  OnInit,
+} from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -14,6 +19,7 @@ import { differenceInHours, differenceInMinutes } from 'date-fns';
   imports: [FormsModule, ReactiveFormsModule],
   templateUrl: './form-schedule.component.html',
   styleUrl: './form-schedule.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormScheduleComponent implements OnInit {
   schedule = input<any>();

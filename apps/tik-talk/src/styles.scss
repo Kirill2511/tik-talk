@@ -60,6 +60,15 @@ body {
   &:disabled {
     background: var(--light-transparent-color);
   }
+
+  &_transparent {
+    color: var(--light-color);
+    background: none;
+  }
+
+  &_border {
+    border: var(--light-border);
+  }
 }
 
 .btn-icon {
@@ -80,6 +89,11 @@ body {
 .svg16 {
   width: 16px;
   height: 16px;
+}
+
+.svg18 {
+  width: 18px;
+  height: 18px;
 }
 
 .btn-shadow {

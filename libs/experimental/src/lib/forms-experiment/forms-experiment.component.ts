@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import {
   AbstractControl,
   FormArray,
@@ -89,6 +89,7 @@ function validateDateRange({
   imports: [ReactiveFormsModule, KeyValuePipe, RatingComponent],
   templateUrl: './forms-experiment.component.html',
   styleUrl: './forms-experiment.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FormsExperimentComponent {
   ReceiverType = ReceiverType;

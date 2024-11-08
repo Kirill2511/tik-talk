@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import {
   AvatarCircleComponent,
   SvgIconComponent,
@@ -18,6 +18,7 @@ import { FormatNamesPipe } from '../../../../ui/pipes';
   ],
   templateUrl: './communities-list-item.component.html',
   styleUrl: './communities-list-item.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommunitiesListItemComponent {
   community = input<Community>();

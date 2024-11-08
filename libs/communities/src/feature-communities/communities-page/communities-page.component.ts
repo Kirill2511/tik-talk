@@ -1,8 +1,13 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StackInputComponent, SvgIconComponent } from '@tt/common-ui';
+import {
+  ModalService,
+  StackInputComponent,
+  SvgIconComponent,
+} from '@tt/common-ui';
 import { CommunitiesListComponent } from './communities-list/communities-list.component';
+import { CommunitiesCreateComponent } from './modal';
 
 @Component({
   selector: 'tt-communities',
@@ -14,8 +19,17 @@ import { CommunitiesListComponent } from './communities-list/communities-list.co
     StackInputComponent,
     SvgIconComponent,
     CommunitiesListComponent,
+    CommunitiesCreateComponent,
   ],
   templateUrl: './communities-page.component.html',
   styleUrl: './communities-page.component.scss',
+  providers: [],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CommunitiesPageComponent {}
+export class CommunitiesPageComponent {
+  modalService = inject(ModalService);
+
+  openModal() {
+    this.modalService.openModal(CommunitiesCreateComponent);
+  }
+}

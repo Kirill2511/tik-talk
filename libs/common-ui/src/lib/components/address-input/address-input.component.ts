@@ -1,4 +1,10 @@
-import { Component, forwardRef, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  inject,
+  signal,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormControl,
@@ -25,6 +31,7 @@ import { DadataSuggestion } from '../../data/interfaces/dadata.interface';
       useExisting: forwardRef(() => AddressInputComponent),
     },
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddressInputComponent implements ControlValueAccessor {
   innerSearchControl = new FormControl();

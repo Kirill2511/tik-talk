@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { ProfileCardComponent } from '../../ui';
 import { profileActions, selectFilteredProfiles } from '../../data';
 import { ProfileFiltersComponent } from '..';
@@ -17,6 +17,7 @@ import { InfiniteScrollDirective } from 'ngx-infinite-scroll';
   ],
   templateUrl: './search-page.component.html',
   styleUrl: './search-page.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SearchPageComponent {
   store = inject(Store);
