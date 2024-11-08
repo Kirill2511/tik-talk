@@ -1,8 +1,7 @@
 <div class="communities-create__wrapper">
   <tt-input border="bottom"
   >Название сообщества
-  </tt-input
-  >
+  </tt-input>
   <label class="tt-control-label mb16">
     Тема
     <select class="tt-input tt-input_border-bottom">
@@ -20,7 +19,7 @@
   </label>
 
   <div class="communities-create__btns">
-    <button class="regular btn btn_transparent btn_border">
+    <button (click)="closeModal()" class="regular btn btn_transparent btn_border">
       <strong>Отмена</strong>
     </button>
     <button class="btn">Создать</button>

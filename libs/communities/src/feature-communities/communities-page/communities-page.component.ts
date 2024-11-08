@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
@@ -19,6 +19,7 @@ import { CommunitiesCreateComponent } from './modal';
     StackInputComponent,
     SvgIconComponent,
     CommunitiesListComponent,
+    CommunitiesCreateComponent,
   ],
   templateUrl: './communities-page.component.html',
   styleUrl: './communities-page.component.scss',
@@ -26,12 +27,9 @@ import { CommunitiesCreateComponent } from './modal';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommunitiesPageComponent {
-  constructor(private modalService: ModalService) {}
+  modalService = inject(ModalService);
 
-  openDialog() {
-    const dialogRef = this.modalService.openModal(CommunitiesCreateComponent);
-    dialogRef.instance.close.subscribe(() => {
-      this.modalService.closeDialog(dialogRef);
-    });
+  openModal() {
+    this.modalService.openModal(CommunitiesCreateComponent);
   }
 }

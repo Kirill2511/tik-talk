@@ -6,7 +6,7 @@ import { ModalComponent } from '../components';
 })
 export class ModalService {
   private container!: ViewContainerRef;
-  #modalComponent = ModalComponent;
+  private modalRef!: ComponentRef<ModalComponent>;
 
   setContainer(container: ViewContainerRef) {
     this.container = container;
@@ -19,13 +19,14 @@ export class ModalService {
 
     this.container.clear();
 
-    const dialogRef: any = this.container.createComponent(this.#modalComponent);
-    dialogRef.instance.contentComponent = contentComponent;
-
-    return dialogRef;
+    this.modalRef = this.container.createComponent(ModalComponent);
+    this.modalRef.instance.contentComponent = contentComponent;
+    return this.modalRef;
   }
 
-  closeDialog(componentRef: ComponentRef<any>) {
-    componentRef.destroy();
+  closeModal() {
+    if (this.modalRef) {
+      this.modalRef.destroy();
+    }
   }
 }

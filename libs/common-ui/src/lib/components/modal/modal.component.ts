@@ -1,13 +1,13 @@
 import {
   AfterViewInit,
   Component,
-  EventEmitter,
+  inject,
   Input,
-  Output,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
 import { SvgIconComponent } from '../svg-icon/svg-icon.component';
+import { ModalService } from '../../services';
 
 @Component({
   selector: 'tt-modal',
@@ -20,13 +20,17 @@ export class ModalComponent implements AfterViewInit {
   @ViewChild('contentContainer', { read: ViewContainerRef })
   contentContainer!: ViewContainerRef;
 
-  @Output() close = new EventEmitter<void>();
   @Input() contentComponent: any;
+  modalService = inject(ModalService);
 
   ngAfterViewInit() {
     if (this.contentComponent) {
       this.contentContainer.clear();
       this.contentContainer.createComponent(this.contentComponent);
     }
+  }
+
+  closeModal() {
+    this.modalService.closeModal();
   }
 }

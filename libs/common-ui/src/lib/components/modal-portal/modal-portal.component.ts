@@ -8,16 +8,16 @@ import { ModalService } from '../../services';
 
 @Component({
   selector: 'tt-modal-portal',
-  template: `<ng-container #portalContainer></ng-container>`,
+  template: `<ng-container #modalContainer></ng-container>`,
   standalone: true,
 })
 export class ModalPortalComponent implements AfterViewInit {
-  @ViewChild('portalContainer', { read: ViewContainerRef })
-  portalContainer!: ViewContainerRef;
+  @ViewChild('modalContainer', { read: ViewContainerRef })
+  modalContainer!: ViewContainerRef;
 
   constructor(private modalService: ModalService) {}
 
   ngAfterViewInit() {
-    this.modalService.setContainer(this.portalContainer);
+    this.modalService.setContainer(this.modalContainer);
   }
 }
