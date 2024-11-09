@@ -1,4 +1,10 @@
-import { Component, effect, inject, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  effect,
+  inject,
+  OnInit,
+} from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { SubscriberCardComponent } from './subscriber-card/subscriber-card.component';
@@ -22,6 +28,7 @@ import { ChatsService } from '@tt/chats';
   ],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SidebarComponent implements OnInit {
   profileService = inject(ProfileService);

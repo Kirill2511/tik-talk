@@ -1,4 +1,10 @@
-import { Component, forwardRef, input, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  input,
+  signal,
+} from '@angular/core';
 import {
   ControlValueAccessor,
   FormsModule,
@@ -11,6 +17,7 @@ import {
   imports: [FormsModule],
   templateUrl: './tt-input.component.html',
   styleUrl: './tt-input.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { StackInputComponent, TtInputComponent } from '@tt/common-ui';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, startWith, Subscription } from 'rxjs';
@@ -18,6 +18,7 @@ interface SearchForm {
   imports: [StackInputComponent, TtInputComponent, ReactiveFormsModule],
   templateUrl: './communities-list-filters.component.html',
   styleUrl: './communities-list-filters.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CommunitiesListFiltersComponent {
   store = inject(Store);
