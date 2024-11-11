@@ -1,5 +1,12 @@
-.tt-input {
+:host {
+  &.ng-invalid.ng-touched {
+    .tt-input {
+      border: 2px solid tomato;
+    }
+  }
+}
 
+.tt-input {
   &[data-border='full'] {
     border: 1px solid var(--light-color);
   }

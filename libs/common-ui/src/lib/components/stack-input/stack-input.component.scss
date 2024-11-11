@@ -1,3 +1,11 @@
+:host {
+  &.ng-invalid.ng-touched {
+    .stack-control {
+      border: 2px solid tomato;
+    }
+  }
+}
+
 .stack-control {
   display: flex;
   flex-wrap: wrap;

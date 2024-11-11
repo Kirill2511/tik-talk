@@ -53,6 +53,7 @@ export class TtInputComponent implements ControlValueAccessor {
   onModelChange(val: string | null) {
     this.onChange(val);
   }
+
   setDisabledState(isDisabled: boolean) {
     this.disabled.set(isDisabled);
   }
