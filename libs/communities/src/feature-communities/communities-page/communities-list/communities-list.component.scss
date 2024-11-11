@@ -1,6 +1,9 @@
 :host {
   display: flex;
+  overflow-x: hidden;
+  overflow-y: auto;
   flex-direction: column;
+  height: calc(100dvh - 128px);
   gap: 20px;
 }
 
