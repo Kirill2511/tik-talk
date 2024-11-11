@@ -6,7 +6,11 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { communityActions, themesOptions } from '../../../../data';
+import {
+  communityActions,
+  CommunityThemes,
+  themesOptions,
+} from '../../../../data';
 import {
   ModalComponent,
   ModalService,
@@ -16,7 +20,7 @@ import {
 import { Store } from '@ngrx/store';
 
 interface formGroup {
-  themes: FormControl<string[] | null>;
+  themes: FormControl<CommunityThemes[] | null>;
   name: FormControl<string | null>;
   tags: FormControl<string[] | null>;
   description: FormControl<string | null>;
@@ -40,19 +44,18 @@ export class CommunitiesCreateComponent {
   store = inject(Store);
 
   form = new FormGroup<formGroup>({
-    name: new FormControl<string>('', Validators.required),
-    themes: new FormControl<string[] | null>(null, Validators.required),
-    tags: new FormControl<string[] | null>(null, Validators.required),
-    description: new FormControl<string>('', Validators.required),
+    name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
+    themes: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(1),
+    ]),
+    tags: new FormControl(null, [Validators.required, Validators.minLength(1)]),
+    description: new FormControl(null, [
+      Validators.required,
+      Validators.minLength(1),
+    ]),
   });
-
   protected readonly themesOptions = themesOptions;
-
-  constructor() {
-    this.form.valueChanges.subscribe(() => {
-      console.log(this.form.value);
-    });
-  }
 
   createCommunity() {
     this.form.markAllAsTouched();
@@ -60,11 +63,13 @@ export class CommunitiesCreateComponent {
 
     if (this.form.invalid) return;
 
-    const formValue = this.form.value;
-    const themesArray = { ...formValue, themes: [formValue.themes] };
+    const formValue = this.form.getRawValue();
+    const themesArray = {
+      ...formValue,
+      themes: [formValue.themes] as unknown as CommunityThemes[],
+    };
 
     this.store.dispatch(
-      // @ts-ignore
       communityActions.communityCreate({ create: themesArray })
     );
   }

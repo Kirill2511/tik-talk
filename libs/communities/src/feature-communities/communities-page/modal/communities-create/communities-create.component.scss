@@ -9,6 +9,14 @@
   gap: 20px;
 }
 
+.tt-input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
+.tt-form-input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
 .communities-create__btns {
   display: flex;
   justify-content: flex-end;

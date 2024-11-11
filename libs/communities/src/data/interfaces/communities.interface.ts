@@ -23,8 +23,8 @@ export interface Community {
 }
 
 export interface CommunityCreateDto {
-  name: string;
-  themes: CommunityThemes[];
-  tags: string[];
-  description: string;
+  name: string | null;
+  themes: CommunityThemes[] | null;
+  tags: string[] | null;
+  description: string | null;
 }
