@@ -1,5 +1,8 @@
-import { createActionGroup, props } from '@ngrx/store';
-import { Community } from '../interfaces/communities.interface';
+import { createActionGroup, emptyProps, props } from '@ngrx/store';
+import {
+  Community,
+  CommunityCreateDto,
+} from '../interfaces/communities.interface';
 
 export const communityActions = createActionGroup({
   source: 'community',
@@ -8,5 +11,9 @@ export const communityActions = createActionGroup({
     'set page': props<{ page?: number }>(),
     'community loaded': props<{ community: Community[] }>(),
     'community load failed': props<{ errorMsg: string }>(),
+
+    'community create': props<{ create: CommunityCreateDto }>(),
+    'community create successfully': emptyProps(),
+    'community create failed': props<{ errorMsg: string }>(),
   },
 });

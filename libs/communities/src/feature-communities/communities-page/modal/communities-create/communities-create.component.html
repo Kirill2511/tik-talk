@@ -1,27 +1,29 @@
-<div class="communities-create__wrapper">
-  <tt-input border="bottom"
-  >Название сообщества
-  </tt-input>
+<form [formGroup]="form" class="communities-create__wrapper">
+  <tt-input border="bottom" formControlName="name">Название сообщества</tt-input>
   <label class="tt-control-label mb16">
     Тема
-    <select class="tt-input tt-input_border-bottom">
+    <select class="tt-input tt-input_border-bottom" formControlName="themes">
       @for (themes of themesOptions; track themes.id) {
-        <option [value]="themes.value">{{ themes.name }}</option>
+      <option [value]="themes.value">{{ themes.name }}</option>
       }
     </select>
   </label>
+  <tt-stack-input formControlName="tags" placeholder="Напишите теги"
+  >Теги
+  </tt-stack-input>
+
   <label class="tt-form-label">
     <span class="tt-form-label__text">Описание</span>
-    <textarea
-      class="tt-form-input tt-textarea"
-      rows="4"
-    ></textarea>
+    <textarea class="tt-form-input tt-textarea" formControlName="description" rows="4"></textarea>
   </label>
 
   <div class="communities-create__btns">
-    <button (click)="closeModal()" class="regular btn btn_transparent btn_border">
+    <button
+      (click)="closeModal()"
+      class="regular btn btn_transparent btn_border"
+    >
       <strong>Отмена</strong>
     </button>
-    <button class="btn">Создать</button>
+    <button (click)="createCommunity()" class="btn">Создать</button>
   </div>
-</div>
+</form>
