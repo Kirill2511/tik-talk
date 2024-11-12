@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { StackInputComponent, TtInputComponent } from '@tt/common-ui';
+import {
+  StackInputComponent,
+  SvgIconComponent,
+  TtInputComponent,
+} from '@tt/common-ui';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, map, startWith, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -15,7 +19,12 @@ interface SearchForm {
 @Component({
   selector: 'tt-communities-list-filters',
   standalone: true,
-  imports: [StackInputComponent, TtInputComponent, ReactiveFormsModule],
+  imports: [
+    StackInputComponent,
+    TtInputComponent,
+    ReactiveFormsModule,
+    SvgIconComponent,
+  ],
   templateUrl: './communities-list-filters.component.html',
   styleUrl: './communities-list-filters.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
