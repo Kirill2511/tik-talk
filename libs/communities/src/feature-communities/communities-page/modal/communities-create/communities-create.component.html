@@ -4,7 +4,7 @@
     Тема
     <select class="tt-input tt-input_border-bottom" formControlName="themes">
       @for (themes of themesOptions; track themes.id) {
-      <option [value]="themes.value">{{ themes.name }}</option>
+        <option [value]="themes.value">{{ themes.name }}</option>
       }
     </select>
   </label>
@@ -18,12 +18,23 @@
   </label>
 
   <div class="communities-create__btns">
-    <button
-      (click)="closeModal()"
-      class="regular btn btn_transparent btn_border"
-    >
-      <strong>Отмена</strong>
-    </button>
-    <button (click)="createCommunity()" class="btn">Создать</button>
+    @if (isDeleted()) {
+      <button
+        class="regular btn btn_transparent btn_border"
+      >
+        <svg class="svg16" icon="delete"></svg>
+      </button>
+    } @else {
+      <div></div>
+    }
+    <div class="communities-create__btns_right">
+      <button
+        (click)="closeModal()"
+        class="regular btn btn_transparent btn_border"
+      >
+        <strong>Отмена</strong>
+      </button>
+      <button (click)="createCommunity()" class="btn">Создать</button>
+    </div>
   </div>
 </form>

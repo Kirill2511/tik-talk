@@ -19,7 +19,12 @@
 
 .communities-create__btns {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 42px;
   gap: 10px;
+
+  &_right {
+    display: flex;
+    gap: 20px;
+  }
 }

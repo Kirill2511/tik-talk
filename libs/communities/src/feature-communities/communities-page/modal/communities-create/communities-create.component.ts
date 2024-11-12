@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,6 +15,7 @@ import {
   ModalComponent,
   ModalService,
   StackInputComponent,
+  SvgIconComponent,
   TtInputComponent,
 } from '@tt/common-ui';
 import { Store } from '@ngrx/store';
@@ -35,6 +36,7 @@ interface formGroup {
     TtInputComponent,
     ModalComponent,
     StackInputComponent,
+    SvgIconComponent,
   ],
   templateUrl: './communities-create.component.html',
   styleUrl: './communities-create.component.scss',
@@ -42,6 +44,8 @@ interface formGroup {
 export class CommunitiesCreateComponent {
   modalService = inject(ModalService);
   store = inject(Store);
+
+  isDeleted = input<boolean>(false);
 
   form = new FormGroup<formGroup>({
     name: new FormControl(null, [Validators.required, Validators.minLength(3)]),
