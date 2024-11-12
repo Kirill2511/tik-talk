@@ -21,7 +21,6 @@ export class CommunitiesService {
   }
 
   createCommunity(community: CommunityCreateDto) {
-    console.log(community);
     return this.http.post<CommunityCreateDto>(
       `${this.#communityApiUrl}`,
       community
