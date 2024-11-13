@@ -1,7 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Pageble } from '@tt/shared';
-import { Community } from '../interfaces/communities.interface';
+import {
+  Community,
+  CommunityCreateDto,
+} from '../interfaces/communities.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +18,12 @@ export class CommunitiesService {
     return this.http.get<Pageble<Community>>(`${this.#communityApiUrl}`, {
       params,
     });
+  }
+
+  createCommunity(community: CommunityCreateDto) {
+    return this.http.post<CommunityCreateDto>(
+      `${this.#communityApiUrl}`,
+      community
+    );
   }
 }

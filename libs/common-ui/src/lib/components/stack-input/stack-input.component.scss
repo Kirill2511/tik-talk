@@ -1,4 +1,13 @@
+:host {
+  &.ng-invalid.ng-touched {
+    .stack-control {
+      border: 2px solid tomato;
+    }
+  }
+}
+
 .stack-control {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
@@ -18,6 +27,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
+  width: max-content;
   min-height: 20px;
   color: var(--light-transparent-color);
   border: none;
@@ -48,3 +58,8 @@
   }
 }
 
+.icon {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+}

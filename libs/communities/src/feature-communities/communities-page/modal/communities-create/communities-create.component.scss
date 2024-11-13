@@ -9,9 +9,22 @@
   gap: 20px;
 }
 
+.tt-input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
+.tt-form-input.ng-invalid.ng-touched {
+  border: 2px solid tomato;
+}
+
 .communities-create__btns {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   margin-top: 42px;
   gap: 10px;
+
+  &_right {
+    display: flex;
+    gap: 20px;
+  }
 }

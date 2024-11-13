@@ -1,7 +1,8 @@
 <div [formGroup]="formSearch" class="communities-list-filters btn-shadow">
-  <tt-input border="bottom" formControlName="name"
-    >Название сообщества</tt-input
-  >
+  <tt-input border="bottom" formControlName="name">
+    Название сообщества
+    <svg class="svg18" icon="search" icon-end />
+  </tt-input>
   <label class="tt-control-label mb16">
     Тема
     <select class="tt-input tt-input_border-bottom" formControlName="themes">
@@ -10,7 +11,8 @@
       }
     </select>
   </label>
-  <tt-stack-input formControlName="tags" placeholder="Напишите теги"
-    >Теги
+  <tt-stack-input formControlName="tags" placeholder="Напишите теги">
+    Теги
+    <svg class="svg18" icon="search" icon-end />
   </tt-stack-input>
 </div>

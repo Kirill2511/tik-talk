@@ -1,4 +1,17 @@
+:host {
+  &.ng-invalid.ng-touched {
+    .tt-input {
+      border: 2px solid tomato;
+    }
+  }
+}
+
+.tt-control-label {
+  position: relative;
+}
+
 .tt-input {
+  z-index: 1;
 
   &[data-border='full'] {
     border: 1px solid var(--light-color);
@@ -11,4 +24,12 @@
     border-radius: 0;
     outline: none;
   }
+
+}
+
+.icon {
+  position: absolute;
+  z-index: 10;
+  right: 0;
+  bottom: 10px;
 }

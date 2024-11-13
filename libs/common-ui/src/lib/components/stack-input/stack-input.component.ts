@@ -56,7 +56,7 @@ export class StackInputComponent implements ControlValueAccessor {
       this.onChange(newValue);
     }
     this.innerInput = '';
-    this.inputVisible = false;
+    this.inputElement?.nativeElement.focus();
   }
 
   registerOnChange(fn: any): void {
@@ -92,5 +92,9 @@ export class StackInputComponent implements ControlValueAccessor {
     setTimeout(() => {
       this.inputElement?.nativeElement.focus();
     }, 10);
+  }
+
+  handleInputBlur(): void {
+    this.inputVisible = false;
   }
 }

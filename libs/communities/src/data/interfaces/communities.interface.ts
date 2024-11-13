@@ -21,3 +21,10 @@ export interface Community {
   createdAt: string;
   posts: Post[];
 }
+
+export interface CommunityCreateDto {
+  name: string | null;
+  themes: CommunityThemes[] | null;
+  tags: string[] | null;
+  description: string | null;
+}

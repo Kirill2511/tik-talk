@@ -19,13 +19,15 @@
       <input
         id="stack"
         #inputElement
-        (blur)="handleInputConfirm()"
+        (blur)="handleInputBlur()"
         (keydown.enter)="handleInputConfirm()"
         [(ngModel)]="innerInput"
         class="stack-ghost-input"
         type="text"
       />
     }
-
+    <div class="icon">
+      <ng-content select="[icon-end]"></ng-content>
+    </div>
   </div>
 </label>
